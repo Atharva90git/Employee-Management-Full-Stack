@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="m-3" align="right">
+    <button mat-raised-button color="warn" routerLink="/employee/list">Employee List
+      <mat-icon matSuffix>arrow_back_ios</mat-icon>
+    </button>
+    
+  </div>
+  <div class="card p-2 mt-1 bg-dark bg-gradient text-white"  [(ngModel)]="unbounded">
+    
+    <form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)"> 
+      <mat-form-field appearance="fill">
+        <mat-label>Employee ID</mat-label>
+        <input matInput placeholder="Employee ID" name="emp_id" [(ngModel)]="employee.emp_id" disabled />
+        <mat-icon matSuffix>person</mat-icon>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Employee Name" name="emp_name" [(ngModel)]="employee.emp_name" />
+        <mat-icon matSuffix>badge</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Employee Address" name="emp_address" [(ngModel)]="employee.emp_address" />
+        <mat-icon matSuffix>home</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contact No.</mat-label>
+        <input matInput placeholder="Employee contact" name="emp_mobno" [(ngModel)]="employee.emp_mobno" />
+        <mat-icon matSuffix>call</mat-icon>
+      </mat-form-field>
+
+      <div>
+        <label>Gender:
+        </label>
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="M" color="primary" [checked]="employee.emp_gender=='M'" (click)="selectGender('M')">Male </mat-radio-button>
+          
+          <mat-radio-button value="F" color="primary" [checked]="employee.emp_gender=='F'" (click)="selectGender('F')">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Choose Department:</mat-label>
+        <mat-select [(value)]="employee.emp_depertment">
+          <mat-option>None</mat-option>
+          <mat-option value="Development" (onSelectionChange)="dept('Development')">Development</mat-option>
+          <mat-option value="Networking" (onSelectionChange)="dept('Networking')">Networking</mat-option>
+          <mat-option value="IT Security" (onSelectionChange)="dept('IT Security')">IT Security</mat-option>
+          <mat-option value="Testing" (onSelectionChange)="dept('Testing')">Testing</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Employee Skill's</mat-label>
+        <input matInput placeholder="Employee Skills" name="emp_skills" [(ngModel)]="employee.emp_skills" disabled/>
+        <mat-icon matSuffix>military_tech</mat-icon>
+      </mat-form-field>
+
+      <section class="example-section">
+        <label for="">Skill's:</label>
+        <mat-checkbox class="example-margin" color="primary" value="JAVA" (change)="onSkillchange($event)" [checked]="onSkillchacked('JAVA')">JAVA</mat-checkbox>
+        <mat-checkbox class="example-margin" color="primary" value="Python" (change)="onSkillchange($event)" [checked]="onSkillchacked('Python')">Python</mat-checkbox>
+        <mat-checkbox class="example-marg in" color="primary" value="Angular" (change)="onSkillchange($event)" [checked]="onSkillchacked('Angular')">Angular</mat-checkbox>
+        <mat-checkbox class="example-margin" color="primary" value="SQL" (change)="onSkillchange($event)" [checked]="onSkillchacked('SQL')">SQL</mat-checkbox>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <div class="text-center">
+        <button mat-raised-button class="m-3">Clear</button>
+        <button mat-raised-button color="primary">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

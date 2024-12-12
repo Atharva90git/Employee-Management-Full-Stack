@@ -1,0 +1,68 @@
+<div class="container">
+
+    <div class="m-3">
+        <button mat-raised-button color="warn" routerLink="/employee/list" routerLink="/employee">Create Employee
+            <mat-icon matSuffix>arrow_forward_ios</mat-icon>
+        </button>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="emp_id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.emp_id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="emp_name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.emp_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="emp_mobno">
+            <th mat-header-cell *matHeaderCellDef> contact No </th>
+            <td mat-cell *matCellDef="let element"> {{element.emp_mobno}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="emp_address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.emp_address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="emp_gender">
+            <th mat-header-cell *matHeaderCellDef> Gender </th>
+            <td mat-cell *matCellDef="let element"> {{element.emp_gender}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="emp_skills">
+            <th mat-header-cell *matHeaderCellDef> Skill's </th>
+            <td mat-cell *matCellDef="let element"> {{element.emp_skills}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="emp_depertment">
+            <th mat-header-cell *matHeaderCellDef> Department </th>
+            <td mat-cell *matCellDef="let element"> {{element.emp_depertment}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="secondary" aria-label="Example icon button with a heart icon" (click)="editEmployee(element.emp_id)">
+                    <mat-icon color="primary">edit</mat-icon>
+                </button>
+             </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="secondary" aria-label="Example icon button with a heart icon" (click)="deleteEmployee(element.emp_id)">
+                    <mat-icon color="warn">delete</mat-icon>
+                </button>
+             </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
